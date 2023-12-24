@@ -23,19 +23,19 @@ const Header = () => {
           Product
         </Link>
         <Link
-          href='/product/mobile'
+          href='/category/mobile'
           className='text-[1.07rem] font-Poppins font-normal text-black hover:text-blue-800'
         >
           Mobile
         </Link>
         <Link
-          href='/product/wacth'
+          href='/category/wacth'
           className='text-[1.07rem] font-Poppins font-normal text-black hover:text-blue-800'
         >
           Wacht
         </Link>
         <Link
-          href='/product/laptop'
+          href='/category/laptop'
           className='text-[1.07rem] font-Poppins font-normal text-black hover:text-blue-800'
         >
           Laptop
