@@ -1,8 +1,12 @@
+"use client";
 import Link from "next/link";
 import { CiSearch, CiUser } from "react-icons/ci";
 import { BsCart3 } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { handleShoppingIsOpen } from "@/app/lib/Slice/ShoppingCartSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
   return (
     <div className='w-screen h-16 bg-white containers flex items-center justify-between'>
       <Link href='/' className='text-4xl font-Script'>
@@ -45,7 +49,10 @@ const Header = () => {
         <div className='text-2xl cursor-pointer'>
           <CiSearch />
         </div>
-        <div className='text-[1.3rem] cursor-pointer'>
+        <div
+          className='text-[1.3rem] cursor-pointer'
+          onClick={() => dispatch(handleShoppingIsOpen())}
+        >
           <BsCart3 />
         </div>
         <div className='text-2xl cursor-pointer'>

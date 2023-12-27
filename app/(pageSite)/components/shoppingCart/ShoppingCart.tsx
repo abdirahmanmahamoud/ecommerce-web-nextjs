@@ -1,11 +1,19 @@
 "use client";
 import { LiaTimesSolid } from "react-icons/lia";
 import ProductCart from "./ProductCart";
+import { useDispatch, useSelector } from "react-redux";
+import { handleShoppingIsOpen } from "@/app/lib/Slice/ShoppingCartSlice";
 
 const ShoppingCart = () => {
+  const isOpen = useSelector((store: any) => store.shoppingCart.isOpen);
+  const dispatch = useDispatch();
+
   const handleClick = (e: any) => {
-    // e.target.classList[0]
+    if (e.target.classList[0] === "w-screen") {
+      dispatch(handleShoppingIsOpen());
+    }
   };
+  if (!isOpen) return null;
   return (
     <div
       className='w-screen h-screen absolute top-0 z-50 bg-[#0000002a]'
@@ -15,7 +23,10 @@ const ShoppingCart = () => {
         <div className='w-[30%] h-screen absolute top-0 right-0 bg-white'>
           <div className='flex items-center justify-between px-4 py-4 border-b-2'>
             <h3 className='font-Poppins font-normal text-sn'>Shopping Cart</h3>
-            <LiaTimesSolid className='text-2xl cursor-pointer mr-2' />
+            <LiaTimesSolid
+              className='text-2xl cursor-pointer mr-2'
+              onClick={() => dispatch(handleShoppingIsOpen())}
+            />
           </div>
           <div className='w-[98%] h-[71%] px-4 py-2 space-y-2 overflow-auto'>
             <ProductCart />
